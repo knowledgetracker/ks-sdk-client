@@ -3,4 +3,6 @@ export declare class AuthClient {
     API_URL: string;
     constructor(config?: any);
     login(user: any): Promise<any>;
+    getUsers(user: any): Promise<any>;
+    getUser(userId: any): Promise<any>;
 }

@@ -24,8 +24,22 @@ class AuthClient {
     }
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {
+            let url = `${config_1.USER_API_URL}v1/auth/login`;
+            let response = yield axios_1.default.post(url, user);
+            return response.data;
+        });
+    }
+    getUsers(user) {
+        return __awaiter(this, void 0, void 0, function* () {
             let url = `${config_1.USER_API_URL}v1/users?role=U`;
             let response = yield axios_1.default.post(url, user);
+            return response.data;
+        });
+    }
+    getUser(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = this.API_URL + `v1/users/${userId}`;
+            let response = yield axios_1.default.get(url);
             return response.data;
         });
     }
