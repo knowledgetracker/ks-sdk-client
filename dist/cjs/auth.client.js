@@ -20,9 +20,7 @@ class AuthClient {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         console.log(this.headers);
         this.API_URL =
-            config.environment === "DEV"
-                ? config_1.NODE_API_ENVIRONMENT.DEV
-                : config_1.NODE_API_ENVIRONMENT.PROD;
+            config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {
