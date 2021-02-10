@@ -2,6 +2,7 @@ import axios from "axios";
 import { API_ENVIRONMENT } from "./config";
 export class BatchClient {
   headers: any;
+
   API_URL: string;
 
   constructor(config: any = {}) {
@@ -17,9 +18,11 @@ export class BatchClient {
     return response.data;
   }
 
-  async updateBatch(batch: any) {
-    let url = `${this.API_URL}v1/batches`;
-    let response = await axios.post(url, batch, { headers: this.headers });
+  async updateBatch(id: any, batch: any) {
+    // let createdBy = this.authService.getLoggedInUsername();
+    // batch["createdBy"] = createdBy;
+    let url = `${this.API_URL}v1/batches/${id}`;
+    let response = await axios.put(url, batch, { headers: this.headers });
     return response.data;
   }
   async updateBatchCourse(id: any, batchcourse: any) {
@@ -72,8 +75,8 @@ export class BatchClient {
     return response.data;
   }
 
-  async removeCourseFromBatch(id: any, userId: any) {
-    let url = `${this.API_URL}v1/batches/${id}/courses/${userId}`;
+  async removeCourseFromBatch(id: any, courseId: any) {
+    let url = `${this.API_URL}v1/batches/${id}/courses/${courseId}`;
     let response = await axios.delete(url, { headers: this.headers });
     return response.data;
   }

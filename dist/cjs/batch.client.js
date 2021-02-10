@@ -29,10 +29,12 @@ class BatchClient {
             return response.data;
         });
     }
-    updateBatch(batch) {
+    updateBatch(id, batch) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batches`;
-            let response = yield axios_1.default.post(url, batch, { headers: this.headers });
+            // let createdBy = this.authService.getLoggedInUsername();
+            // batch["createdBy"] = createdBy;
+            let url = `${this.API_URL}v1/batches/${id}`;
+            let response = yield axios_1.default.put(url, batch, { headers: this.headers });
             return response.data;
         });
     }
@@ -94,9 +96,9 @@ class BatchClient {
             return response.data;
         });
     }
-    removeCourseFromBatch(id, userId) {
+    removeCourseFromBatch(id, courseId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batches/${id}/courses/${userId}`;
+            let url = `${this.API_URL}v1/batches/${id}/courses/${courseId}`;
             let response = yield axios_1.default.delete(url, { headers: this.headers });
             return response.data;
         });

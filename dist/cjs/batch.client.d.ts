@@ -3,7 +3,7 @@ export declare class BatchClient {
     API_URL: string;
     constructor(config?: any);
     addBatch(batch: any): Promise<any>;
-    updateBatch(batch: any): Promise<any>;
+    updateBatch(id: any, batch: any): Promise<any>;
     updateBatchCourse(id: any, batchcourse: any): Promise<any>;
     deleteBatch(id: any): Promise<any>;
     getBatches(): Promise<any>;
@@ -12,7 +12,7 @@ export declare class BatchClient {
     getBatchCourses(id: any): Promise<any>;
     getBatchCourse(id: any, courseId: any): Promise<any>;
     addCourseToBatch(id: any, batchcourse: any): Promise<any>;
-    removeCourseFromBatch(id: any, userId: any): Promise<any>;
+    removeCourseFromBatch(id: any, courseId: any): Promise<any>;
     addUserToBatch(id: any, batchUser: any): Promise<any>;
     removeUserFromBatch(id: any, userId: any): Promise<any>;
     getBatchActivities(id: any): Promise<any>;
