@@ -33,4 +33,11 @@ export declare class BatchClient {
         label: string;
         value: string;
     })[]>;
+    getBatchCoursePlanReport(data?: any): Promise<({
+        label: string;
+        value: number;
+    } | {
+        label: string;
+        value: string;
+    })[]>;
 }
