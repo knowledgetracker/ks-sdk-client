@@ -22,6 +22,12 @@ export class BatchClient {
     let response = await axios.post(url, batch, { headers: this.headers });
     return response.data;
   }
+  async updateBatchCourse(id: any, batchcourse: any) {
+    let url = `${this.API_URL}v1/batches/${id}/courses/${batchcourse.courseId}`;
+    let response = await axios.put(url, batchcourse, { headers: this.headers });
+    return response.data;
+  }
+
   async deleteBatch(id: any) {
     let url = `${this.API_URL}v1/batches/${id}`;
     let response = await axios.delete(url, { headers: this.headers });

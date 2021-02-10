@@ -1,6 +1,6 @@
-import { API_ENVIRONMENT } from "./config";
-
-export class CourseClient {
+import axios from "axios";
+import { API_ENVIRONMENT, USER_API_URL } from "./config";
+export class ProjectClient {
   headers: any;
   API_URL: string;
 
@@ -9,9 +9,5 @@ export class CourseClient {
     console.log(this.headers);
     this.API_URL =
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
-  }
-
-  listCourses() {
-    return ["Java"];
   }
 }

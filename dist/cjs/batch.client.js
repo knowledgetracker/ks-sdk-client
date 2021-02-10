@@ -36,6 +36,13 @@ class BatchClient {
             return response.data;
         });
     }
+    updateBatchCourse(id, batchcourse) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/batches/${id}/courses/${batchcourse.courseId}`;
+            let response = yield axios_1.default.put(url, batchcourse, { headers: this.headers });
+            return response.data;
+        });
+    }
     deleteBatch(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batches/${id}`;
