@@ -6,15 +6,19 @@
   "module": "./dist/esm/index.js",
   "files": [
     "dist/"
-  ],  
+  ],
   "scripts": {
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "publish": "npm run tsc"    
+    "publish": "npm run tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.1.4"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "lodash": "^4.17.20"
   }
 }

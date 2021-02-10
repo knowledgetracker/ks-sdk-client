@@ -1,6 +1,5 @@
-export class CourseClient{
-
-    listCourses(){
-        return ["Java"];
-    }
+export class CourseClient {
+  listCourses() {
+    return ["Java"];
+  }
 }

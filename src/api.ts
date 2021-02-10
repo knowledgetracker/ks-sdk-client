@@ -1,3 +1,3 @@
-export const API = ():string => {
-    return "Welcome to API";
-  }
+export const API = (): string => {
+  return "Welcome to API";
+};
