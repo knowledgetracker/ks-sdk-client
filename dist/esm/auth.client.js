@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
+import { API_ENVIRONMENT } from "./config";
 export class AuthClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
@@ -18,14 +18,14 @@ export class AuthClient {
     }
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${USER_API_URL}v1/auth/login`;
+            let url = `${this.API_URL}v1/auth/login`;
             let response = yield axios.post(url, user);
             return response.data;
         });
     }
     getUsers(user) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${USER_API_URL}v1/users?role=U`;
+            let url = `${this.API_URL}v1/users?role=U`;
             let response = yield axios.post(url, user);
             return response.data;
         });

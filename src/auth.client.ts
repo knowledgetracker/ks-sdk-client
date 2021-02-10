@@ -12,13 +12,13 @@ export class AuthClient {
   }
 
   async login(user: any) {
-    let url = `${USER_API_URL}v1/auth/login`;
+    let url = `${this.API_URL}v1/auth/login`;
     let response = await axios.post(url, user);
     return response.data;
   }
 
   async getUsers(user: any) {
-    let url = `${USER_API_URL}v1/users?role=U`;
+    let url = `${this.API_URL}v1/users?role=U`;
     let response = await axios.post(url, user);
     return response.data;
   }
