@@ -149,4 +149,35 @@ export class BatchClient {
     reportData.push({ label: "Percentage", value: percentage + "%" });
     return reportData;
   }
+  async getBatchCourseTopicReport(data: any = []) {
+    let today = new Date();
+    let reportData = [];
+    let i = 0;
+    let total = 0;
+    let completed = 0;
+    let pending = 0;
+    let totalDuration = 0;
+    let topicDelayed = 0;
+    let modules = Object.keys(data);
+    for (let m of modules) {
+      let topics = data[m];
+      for (let c of topics) {
+        completed += c.status == "C" ? 1 : 0;
+        pending += c.status == "P" ? 1 : 0;
+        totalDuration += c.duration;
+        topicDelayed +=
+          c.status == "P" && new Date(c.plannedDate) < today ? 1 : 0;
+        total += 1;
+      }
+    }
+    let hours = Math.ceil(totalDuration / 60);
+    let percentage = Math.round((100 * completed) / total);
+    reportData.push({ label: "Duration(Hrs)", value: hours });
+    reportData.push({ label: "Topics", value: total });
+    reportData.push({ label: "Completed", value: completed });
+    reportData.push({ label: "Pending", value: pending });
+    reportData.push({ label: "Percentage", value: percentage + "%" });
+    reportData.push({ label: "Topics Due", value: topicDelayed });
+    return reportData;
+  }
 }
