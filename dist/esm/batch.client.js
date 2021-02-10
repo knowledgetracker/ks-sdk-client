@@ -131,17 +131,43 @@ export class BatchClient {
         });
     }
     getBatchListWidgetData(data = []) {
-        let total = data.length;
-        let completed = data.filter((b) => b.status == "COMPLETED").length;
-        let inProgress = data.filter((b) => b.status == "IN_PROGRESS").length;
-        let scheduled = data.filter((b) => b.status == "SCHEDULED").length;
-        let users = data.reduce((sum, obj) => sum + obj.noOfParticipants, 0);
-        let reportData = [];
-        reportData.push({ label: "Batches", value: total });
-        reportData.push({ label: "Users", value: users });
-        reportData.push({ label: "Completed", value: completed });
-        reportData.push({ label: "In Progress", value: inProgress });
-        reportData.push({ label: "Scheduled", value: scheduled });
-        return reportData;
+        return __awaiter(this, void 0, void 0, function* () {
+            let total = data.length;
+            let completed = data.filter((b) => b.status == "COMPLETED").length;
+            let inProgress = data.filter((b) => b.status == "IN_PROGRESS").length;
+            let scheduled = data.filter((b) => b.status == "SCHEDULED").length;
+            let users = data.reduce((sum, obj) => sum + obj.noOfParticipants, 0);
+            let reportData = [];
+            reportData.push({ label: "Batches", value: total });
+            reportData.push({ label: "Users", value: users });
+            reportData.push({ label: "Completed", value: completed });
+            reportData.push({ label: "In Progress", value: inProgress });
+            reportData.push({ label: "Scheduled", value: scheduled });
+            return reportData;
+        });
+    }
+    getBatchCourseListReport(courses = []) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let reportData = [];
+            let i = 0;
+            let total = 0;
+            let completed = 0;
+            let pending = 0;
+            for (let c of courses) {
+                completed += c.completed_topics;
+                pending += c.pending_topics;
+                total += c.pending_topics + c.completed_topics;
+            }
+            let percentage = 0;
+            if (total > 0) {
+                percentage = Math.round((100 * completed) / total);
+            }
+            reportData.push({ label: "Courses", value: courses.length });
+            reportData.push({ label: "Topics", value: total });
+            reportData.push({ label: "Completed", value: completed });
+            reportData.push({ label: "Pending", value: pending });
+            reportData.push({ label: "Percentage", value: percentage + "%" });
+            return reportData;
+        });
     }
 }
