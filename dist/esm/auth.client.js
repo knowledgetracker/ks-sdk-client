@@ -8,13 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
+import { NODE_API_ENVIRONMENT, USER_API_URL } from "./config";
 export class AuthClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         console.log(this.headers);
         this.API_URL =
-            config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
+            config.environment === "DEV"
+                ? NODE_API_ENVIRONMENT.DEV
+                : NODE_API_ENVIRONMENT.PROD;
     }
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {

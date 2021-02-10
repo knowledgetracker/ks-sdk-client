@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
+import { NODE_API_ENVIRONMENT, USER_API_URL } from "./config";
 export class AuthClient {
   headers: any;
   API_URL: string;
@@ -8,7 +8,9 @@ export class AuthClient {
     this.headers = config?.headers;
     console.log(this.headers);
     this.API_URL =
-      config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
+      config.environment === "DEV"
+        ? NODE_API_ENVIRONMENT.DEV
+        : NODE_API_ENVIRONMENT.PROD;
   }
 
   async login(user: any) {
