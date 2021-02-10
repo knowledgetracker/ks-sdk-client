@@ -212,4 +212,30 @@ export class BatchClient {
     reportData.push({ label: "Topics Due", value: topicDelayed });
     return reportData;
   }
+
+  async getBatchActivitiesReport(data: any = [], batch: any) {
+    let reportData = [];
+    let total = data.length;
+    let totalTopics = data.reduce((sum: number, obj: any) => {
+      return sum + obj.cnt;
+    }, 0);
+
+    let date1: any = new Date();
+    let date2: any = new Date(batch.endDate);
+    const startDate: any = new Date(batch.startDate);
+    const totalDays = Math.ceil(
+      Math.abs(date2 - startDate) / (1000 * 60 * 60 * 24)
+    );
+    const daysCompleted = Math.ceil(
+      Math.abs(date1 - startDate) / (1000 * 60 * 60 * 24)
+    );
+
+    let topicsPerDay = Math.round(totalTopics / daysCompleted);
+    //this.reportData.push({"label": "Total Days", "value": totalDays  });
+    reportData.push({ label: "Completed Days", value: daysCompleted });
+    reportData.push({ label: "Activity Days", value: data.length });
+    reportData.push({ label: "Topics", value: totalTopics });
+    reportData.push({ label: "Topics per Day", value: topicsPerDay });
+    return reportData;
+  }
 }

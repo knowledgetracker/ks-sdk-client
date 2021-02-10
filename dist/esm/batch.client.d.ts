@@ -40,4 +40,8 @@ export declare class BatchClient {
         label: string;
         value: string;
     })[]>;
+    getBatchActivitiesReport(data: any, batch: any): Promise<{
+        label: string;
+        value: any;
+    }[]>;
 }
