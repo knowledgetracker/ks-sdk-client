@@ -136,5 +136,19 @@ class BatchClient {
             return response.data;
         });
     }
+    getBatchListWidgetData(data = []) {
+        let total = data.length;
+        let completed = data.filter((b) => b.status == "COMPLETED").length;
+        let inProgress = data.filter((b) => b.status == "IN_PROGRESS").length;
+        let scheduled = data.filter((b) => b.status == "SCHEDULED").length;
+        let users = data.reduce((sum, obj) => sum + obj.noOfParticipants, 0);
+        let reportData = [];
+        reportData.push({ label: "Batches", value: total });
+        reportData.push({ label: "Users", value: users });
+        reportData.push({ label: "Completed", value: completed });
+        reportData.push({ label: "In Progress", value: inProgress });
+        reportData.push({ label: "Scheduled", value: scheduled });
+        return reportData;
+    }
 }
 exports.BatchClient = BatchClient;

@@ -18,4 +18,8 @@ export declare class BatchClient {
     getBatchCourseTopics(batchId: any, courseId: any): Promise<any>;
     updateBatchTopicStatus(topicId: any, status: any): Promise<any>;
     updateBatchCoursePlan(id: any, userTopicId: any, planDate: any): Promise<any>;
+    getBatchListWidgetData(data?: any): {
+        label: string;
+        value: any;
+    }[];
 }
