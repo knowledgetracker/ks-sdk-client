@@ -10,113 +10,115 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from "axios";
 import { API_URL } from "./config";
 export class BatchClient {
-    constructor() { }
-    static addBatch(batch) {
+    constructor(config = {}) {
+        this.headers = config === null || config === void 0 ? void 0 : config.headers;
+    }
+    addBatch(batch) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${API_URL}v1/batches`;
+            let response = yield axios.post(url, batch, this.headers);
+            return response.data;
+        });
+    }
+    updateBatch(batch) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches`;
             let response = yield axios.post(url, batch);
             return response.data;
         });
     }
-    static updateBatch(batch) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let url = `${API_URL}v1/batches`;
-            let response = yield axios.post(url, batch);
-            return response.data;
-        });
-    }
-    static deleteBatch(id) {
+    deleteBatch(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}`;
             let response = yield axios.delete(url);
             return response.data;
         });
     }
-    static getBatches() {
+    getBatches() {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static getBatch(id) {
+    getBatch(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static getBatchUsers(id) {
+    getBatchUsers(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/users`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static getBatchCourses(id) {
+    getBatchCourses(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/courses`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static getBatchCourse(id, courseId) {
+    getBatchCourse(id, courseId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/courses/${courseId}`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static addCourseToBatch(id, batchcourse) {
+    addCourseToBatch(id, batchcourse) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/courses`;
             let response = yield axios.post(url, batchcourse);
             return response.data;
         });
     }
-    static removeCourseFromBatch(id, userId) {
+    removeCourseFromBatch(id, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/courses/${userId}`;
             let response = yield axios.delete(url);
             return response.data;
         });
     }
-    static addUserToBatch(id, batchUser) {
+    addUserToBatch(id, batchUser) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/users`;
             let response = yield axios.post(url, batchUser);
             return response.data;
         });
     }
-    static removeUserFromBatch(id, userId) {
+    removeUserFromBatch(id, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/users/${userId}`;
             let response = yield axios.delete(url);
             return response.data;
         });
     }
-    static getBatchActivities(id) {
+    getBatchActivities(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batches/${id}/activity`;
             let response = yield axios.delete(url);
             return response.data;
         });
     }
-    static getBatchCourseTopics(batchId, courseId) {
+    getBatchCourseTopics(batchId, courseId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batchcoursetopics/${courseId}/batches/${batchId}`;
             let response = yield axios.get(url);
             return response.data;
         });
     }
-    static updateBatchTopicStatus(topicId, status) {
+    updateBatchTopicStatus(topicId, status) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}`;
             let response = yield axios.patch(url, null);
             return response.data;
         });
     }
-    static updateBatchCoursePlan(id, userTopicId, planDate) {
+    updateBatchCoursePlan(id, userTopicId, planDate) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${API_URL}v1/batchcoursetopics/batchtopics/${userTopicId}/plan/${planDate}`;
             let response = yield axios.patch(url, null);
