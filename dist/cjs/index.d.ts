@@ -1,2 +1,3 @@
 import { API } from './api.js';
-export { API, };
+import { CourseClient } from './course.client';
+export { API, CourseClient };
