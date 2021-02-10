@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthClient = exports.UserClient = exports.CourseClient = exports.API = void 0;
+exports.BatchClient = exports.AuthClient = exports.UserClient = exports.CourseClient = exports.API = void 0;
 const api_js_1 = require("./api.js");
 Object.defineProperty(exports, "API", { enumerable: true, get: function () { return api_js_1.API; } });
 const course_client_1 = require("./course.client");
@@ -9,3 +9,5 @@ const user_client_1 = require("./user.client");
 Object.defineProperty(exports, "UserClient", { enumerable: true, get: function () { return user_client_1.UserClient; } });
 const auth_client_1 = require("./auth.client");
 Object.defineProperty(exports, "AuthClient", { enumerable: true, get: function () { return auth_client_1.AuthClient; } });
+const batch_client_1 = require("./batch.client");
+Object.defineProperty(exports, "BatchClient", { enumerable: true, get: function () { return batch_client_1.BatchClient; } });
