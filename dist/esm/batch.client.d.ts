@@ -1,5 +1,6 @@
 export declare class BatchClient {
     headers: any;
+    API_URL: string;
     constructor(config?: any);
     addBatch(batch: any): Promise<any>;
     updateBatch(batch: any): Promise<any>;
