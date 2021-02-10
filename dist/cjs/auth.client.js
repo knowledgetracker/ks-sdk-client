@@ -22,7 +22,7 @@ class AuthClient {
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
-    static login(user) {
+    login(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${config_1.USER_API_URL}v1/users?role=U`;
             let response = yield axios_1.default.post(url, user);

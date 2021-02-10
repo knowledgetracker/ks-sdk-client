@@ -16,7 +16,7 @@ export class AuthClient {
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
     }
-    static login(user) {
+    login(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${USER_API_URL}v1/users?role=U`;
             let response = yield axios.post(url, user);
