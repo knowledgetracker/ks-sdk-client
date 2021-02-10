@@ -19,8 +19,8 @@ class UserClient {
     static list() {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${config_1.USER_API_URL}v1/users?role=U`;
-            let response = axios_1.default.get(url);
-            return response;
+            let response = yield axios_1.default.get(url);
+            return response.data;
         });
     }
 }

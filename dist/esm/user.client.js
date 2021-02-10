@@ -13,8 +13,8 @@ export class UserClient {
     static list() {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${USER_API_URL}v1/users?role=U`;
-            let response = axios.get(url);
-            return response;
+            let response = yield axios.get(url);
+            return response.data;
         });
     }
 }
