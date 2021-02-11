@@ -19,21 +19,21 @@ export class AuthClient {
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/auth/login`;
-            let response = yield axios.post(url, user);
+            let response = yield axios.post(url, user, { headers: this.headers });
             return response.data;
         });
     }
     getUsers(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/users?role=U`;
-            let response = yield axios.post(url, user);
+            let response = yield axios.post(url, user, { headers: this.headers });
             return response.data;
         });
     }
     getUser(userId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = this.API_URL + `v1/users/${userId}`;
-            let response = yield axios.get(url);
+            let response = yield axios.get(url, { headers: this.headers });
             return response.data;
         });
     }

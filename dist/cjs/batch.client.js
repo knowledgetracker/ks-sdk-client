@@ -120,28 +120,28 @@ class BatchClient {
     getBatchActivities(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batches/${id}/activity`;
-            let response = yield axios_1.default.delete(url);
+            let response = yield axios_1.default.delete(url, { headers: this.headers });
             return response.data;
         });
     }
     getBatchCourseTopics(batchId, courseId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batchcoursetopics/${courseId}/batches/${batchId}`;
-            let response = yield axios_1.default.get(url);
+            let response = yield axios_1.default.get(url, { headers: this.headers });
             return response.data;
         });
     }
     updateBatchTopicStatus(topicId, status) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}`;
-            let response = yield axios_1.default.patch(url, null);
+            let response = yield axios_1.default.patch(url, null, { headers: this.headers });
             return response.data;
         });
     }
     updateBatchCoursePlan(id, userTopicId, planDate) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${userTopicId}/plan/${planDate}`;
-            let response = yield axios_1.default.patch(url, null);
+            let response = yield axios_1.default.patch(url, null, { headers: this.headers });
             return response.data;
         });
     }
