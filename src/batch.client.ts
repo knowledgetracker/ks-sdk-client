@@ -95,19 +95,19 @@ export class BatchClient {
 
   async getBatchActivities(id: any) {
     let url = `${this.API_URL}v1/batches/${id}/activity`;
-    let response = await axios.delete(url);
+    let response = await axios.delete(url, { headers: this.headers });
     return response.data;
   }
 
   async getBatchCourseTopics(batchId: any, courseId: any) {
     let url = `${this.API_URL}v1/batchcoursetopics/${courseId}/batches/${batchId}`;
-    let response = await axios.get(url);
+    let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
 
   async updateBatchTopicStatus(topicId: any, status: any) {
     let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}`;
-    let response = await axios.patch(url, null);
+    let response = await axios.patch(url, null, { headers: this.headers });
     return response.data;
   }
 

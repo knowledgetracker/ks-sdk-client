@@ -13,19 +13,19 @@ export class AuthClient {
 
   async login(user: any) {
     let url = `${this.API_URL}v1/auth/login`;
-    let response = await axios.post(url, user);
+    let response = await axios.post(url, user, { headers: this.headers });
     return response.data;
   }
 
   async getUsers(user: any) {
     let url = `${this.API_URL}v1/users?role=U`;
-    let response = await axios.post(url, user);
+    let response = await axios.post(url, user, { headers: this.headers });
     return response.data;
   }
 
   async getUser(userId: any) {
     let url = this.API_URL + `v1/users/${userId}`;
-    let response = await axios.get(url);
+    let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
 }
