@@ -13,7 +13,7 @@ export class ProjectClient {
         : NODE_API_ENVIRONMENT.PROD;
   }
 
-  async getMyProjects(userId: any) {
+  async getMyProjects(userId: string) {
     let url = `${this.API_URL}v1/projects?userId=${userId}`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;

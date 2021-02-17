@@ -2,7 +2,7 @@ export declare class ProjectClient {
     headers: any;
     API_URL: string;
     constructor(config?: any);
-    getMyProjects(userId: any): Promise<any>;
+    getMyProjects(userId: string): Promise<any>;
     getProject(id: any): Promise<any>;
     getProjects(): Promise<any>;
     createProject(project: any): Promise<any>;

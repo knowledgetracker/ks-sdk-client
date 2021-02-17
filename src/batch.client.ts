@@ -105,8 +105,8 @@ export class BatchClient {
     return response.data;
   }
 
-  async updateBatchTopicStatus(topicId: any, status: any) {
-    let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}`;
+  async updateBatchTopicStatus(topicId: any, courseId: any, status: any) {
+    let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}?courseId=${courseId}`;
     let response = await axios.patch(url, null, { headers: this.headers });
     return response.data;
   }

@@ -131,9 +131,9 @@ class BatchClient {
             return response.data;
         });
     }
-    updateBatchTopicStatus(topicId, status) {
+    updateBatchTopicStatus(topicId, courseId, status) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}`;
+            let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}?courseId=${courseId}`;
             let response = yield axios_1.default.patch(url, null, { headers: this.headers });
             return response.data;
         });

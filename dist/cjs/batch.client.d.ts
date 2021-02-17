@@ -17,7 +17,7 @@ export declare class BatchClient {
     removeUserFromBatch(id: any, userId: any): Promise<any>;
     getBatchActivities(id: any): Promise<any>;
     getBatchCourseTopics(batchId: any, courseId: any): Promise<any>;
-    updateBatchTopicStatus(topicId: any, status: any): Promise<any>;
+    updateBatchTopicStatus(topicId: any, courseId: any, status: any): Promise<any>;
     updateBatchCoursePlan(id: any, userTopicId: any, planDate: any): Promise<any>;
     getBatchListWidgetData(data?: any): Promise<{
         label: string;
