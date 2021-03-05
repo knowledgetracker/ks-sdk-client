@@ -1,0 +1,1 @@
+{"name":"@ks-sdk-client/rest","version":"1.0.0","dependencies":{"axios":{"version":"0.21.1","dependencies":{"follow-redirects":{"version":"1.13.2"}}},"lodash":{"version":"4.17.20"}}}
