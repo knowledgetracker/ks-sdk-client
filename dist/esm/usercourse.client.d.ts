@@ -1,3 +1,4 @@
+import { UserCourseReport } from "./usercourse-report";
 export declare class UserCourseClient {
     headers: any;
     API_URL: string;
@@ -23,4 +24,18 @@ export declare class UserCourseClient {
      * @param userCourseData
      */
     mergeCourseData(courseData: any, userCourseData: any): any;
+    createUserCourseReport(course: any): ({
+        label: string;
+        value: number;
+    } | {
+        label: string;
+        value: string;
+    })[];
+    getUserCourseReportData(report: UserCourseReport): ({
+        label: string;
+        value: number;
+    } | {
+        label: string;
+        value: string;
+    })[];
 }

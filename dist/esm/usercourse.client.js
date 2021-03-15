@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { API_ENVIRONMENT } from "./config";
 import axios from "axios";
+import { UserCourseReport } from "./usercourse-report";
 export class UserCourseClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
@@ -102,5 +103,54 @@ export class UserCourseClient {
             }
         }
         return courseData;
+    }
+    createUserCourseReport(course) {
+        let total = 0;
+        let completed = 0;
+        let pending = 0;
+        let projectApplied = 0;
+        let totalDuration = 0;
+        let topicDelayed = 0;
+        for (let m of course.modules) {
+            let topics = m.topics ? m.topics : [];
+            for (let c of topics) {
+                completed += c.status == "C" ? 1 : 0;
+                pending += c.status == "P" ? 1 : 0;
+                projectApplied += c.reviewStatus == "A" ? 1 : 0;
+                // totalDuration += c.duration;
+                // topicDelayed += ((c.status == 'P' && new Date(c.plannedDate) < this.today) ? 1 : 0);
+                total += 1;
+            }
+        }
+        let hours = Math.ceil(totalDuration / 60);
+        let percentage = 0;
+        if (total > 0) {
+            percentage = Math.round((100 * completed) / total);
+        }
+        let report = new UserCourseReport();
+        report.modules = course.modules.length;
+        report.topics = total;
+        report.pending = total - completed;
+        report.completed = completed;
+        report.total = total;
+        report.projectApplied = projectApplied;
+        let userData = this.getUserCourseReportData(report);
+        return userData;
+    }
+    getUserCourseReportData(report) {
+        let reportData = [];
+        reportData.push({ label: "Modules", value: report.modules });
+        reportData.push({ label: "Topics", value: report.topics });
+        reportData.push({ label: "Completed", value: report.completed });
+        reportData.push({ label: "Pending", value: report.pending });
+        reportData.push({
+            label: "Percentage",
+            value: report.getPercentage() + "%",
+        });
+        reportData.push({
+            label: "Project(%)",
+            value: report.getProjectPercentage() + "%",
+        });
+        return reportData;
     }
 }

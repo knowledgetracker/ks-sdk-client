@@ -4,4 +4,5 @@ import { AuthClient } from "./auth.client";
 import { BatchClient } from "./batch.client";
 import { ProjectClient } from "./project.client";
 import { UserCourseClient } from "./usercourse.client";
-export { CourseClient, UserClient, AuthClient, BatchClient, ProjectClient, UserCourseClient, };
+import { UserCourseReport } from "./usercourse-report";
+export { CourseClient, UserClient, AuthClient, BatchClient, ProjectClient, UserCourseClient, UserCourseReport, };
