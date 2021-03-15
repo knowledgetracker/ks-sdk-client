@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectClient = exports.BatchClient = exports.AuthClient = exports.UserClient = exports.CourseClient = void 0;
+exports.UserCourseClient = exports.ProjectClient = exports.BatchClient = exports.AuthClient = exports.UserClient = exports.CourseClient = void 0;
 const course_client_1 = require("./course.client");
 Object.defineProperty(exports, "CourseClient", { enumerable: true, get: function () { return course_client_1.CourseClient; } });
 const user_client_1 = require("./user.client");
@@ -11,3 +11,5 @@ const batch_client_1 = require("./batch.client");
 Object.defineProperty(exports, "BatchClient", { enumerable: true, get: function () { return batch_client_1.BatchClient; } });
 const project_client_1 = require("./project.client");
 Object.defineProperty(exports, "ProjectClient", { enumerable: true, get: function () { return project_client_1.ProjectClient; } });
+const usercourse_client_1 = require("./usercourse.client");
+Object.defineProperty(exports, "UserCourseClient", { enumerable: true, get: function () { return usercourse_client_1.UserCourseClient; } });
