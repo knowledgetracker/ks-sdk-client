@@ -6,7 +6,6 @@ export class ProjectClient {
 
   constructor(config: any = {}) {
     this.headers = config?.headers;
-    console.log(this.headers);
     this.API_URL =
       config.environment === "DEV"
         ? NODE_API_ENVIRONMENT.DEV

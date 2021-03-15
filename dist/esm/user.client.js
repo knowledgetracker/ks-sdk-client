@@ -12,7 +12,6 @@ import { API_ENVIRONMENT, USER_API_URL } from "./config";
 export class UserClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        console.log(this.headers);
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
     }

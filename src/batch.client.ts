@@ -7,7 +7,6 @@ export class BatchClient {
 
   constructor(config: any = {}) {
     this.headers = config?.headers;
-    console.log(this.headers);
     this.API_URL =
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
   }

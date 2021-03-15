@@ -18,7 +18,6 @@ const config_1 = require("./config");
 class ProjectClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        console.log(this.headers);
         this.API_URL =
             config.environment === "DEV"
                 ? config_1.NODE_API_ENVIRONMENT.DEV

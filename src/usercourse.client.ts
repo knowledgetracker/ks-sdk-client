@@ -6,7 +6,6 @@ export class UserCourseClient {
 
   constructor(config: any = {}) {
     this.headers = config?.headers;
-    console.log(this.headers);
     this.API_URL =
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
   }
@@ -89,7 +88,6 @@ export class UserCourseClient {
         const userTopic: any = <{}>(
           userCourseData.find((t: any) => t["topicId"] == topic["code"])
         );
-        //            console.log(obj);
         if (userTopic) {
           courseData.modules[i].topics[j] = Object.assign(topic, userTopic);
           if (userTopic.status == "C") {

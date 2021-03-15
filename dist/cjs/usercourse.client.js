@@ -18,7 +18,6 @@ const axios_1 = __importDefault(require("axios"));
 class UserCourseClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        console.log(this.headers);
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
@@ -96,7 +95,6 @@ class UserCourseClient {
             let total = topics.length;
             for (let [j, topic] of topics.entries()) {
                 const userTopic = (userCourseData.find((t) => t["topicId"] == topic["code"]));
-                //            console.log(obj);
                 if (userTopic) {
                     courseData.modules[i].topics[j] = Object.assign(topic, userTopic);
                     if (userTopic.status == "C") {

@@ -19,7 +19,6 @@ class CourseClient {
     constructor(config = {}) {
         this.COURSE_SERVER_URL = "https://coursetracker-courses.s3.ap-south-1.amazonaws.com/spinsoft";
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        console.log(this.headers);
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
