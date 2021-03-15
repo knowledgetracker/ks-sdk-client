@@ -137,9 +137,7 @@ export class UserCourseClient {
     report.completed = completed;
     report.total = total;
     report.projectApplied = projectApplied;
-
-    let userData = this.getUserCourseReportData(report);
-    return userData;
+    return report;
   }
 
   getUserCourseReportData(report: UserCourseReport) {

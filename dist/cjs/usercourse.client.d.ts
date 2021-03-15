@@ -24,13 +24,7 @@ export declare class UserCourseClient {
      * @param userCourseData
      */
     mergeCourseData(courseData: any, userCourseData: any): any;
-    createUserCourseReport(course: any): ({
-        label: string;
-        value: number;
-    } | {
-        label: string;
-        value: string;
-    })[];
+    createUserCourseReport(course: any): UserCourseReport;
     getUserCourseReportData(report: UserCourseReport): ({
         label: string;
         value: number;
