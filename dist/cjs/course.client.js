@@ -17,6 +17,7 @@ const config_1 = require("./config");
 const axios_1 = __importDefault(require("axios"));
 class CourseClient {
     constructor(config = {}) {
+        this.COURSE_SERVER_URL = "https://coursetracker-courses.s3.ap-south-1.amazonaws.com/spinsoft";
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         console.log(this.headers);
         this.API_URL =
@@ -293,6 +294,15 @@ class CourseClient {
             // return this.http.post(url, content, { headers: this.getHeaders() });
             let response = yield axios_1.default.post(url, content, { headers: this.headers });
             return response.data;
+        });
+    }
+    listS3CourseTopics(courseId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //let url = `${this.apiUrl}v1/courses/${courseId}/content`;
+            let url = `${this.COURSE_SERVER_URL}/${courseId}.json`;
+            //return this.http.get(url, { headers: this.getHeaders() });
+            let topics = yield axios_1.default.get(url);
+            return topics.data;
         });
     }
 }

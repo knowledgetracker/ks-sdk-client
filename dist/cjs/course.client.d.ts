@@ -1,6 +1,7 @@
 export declare class CourseClient {
     headers: any;
     API_URL: string;
+    COURSE_SERVER_URL: string;
     constructor(config?: any);
     list(): Promise<any>;
     findOne(id: any): Promise<any>;
@@ -35,4 +36,5 @@ export declare class CourseClient {
     addCourseQuestion(courseId: any, content: any): Promise<any>;
     deleteCourseQuestion(courseId: any, contentId: any): Promise<any>;
     importCourseQuestion(id: any, content: any): Promise<any>;
+    listS3CourseTopics(courseId: string): Promise<any>;
 }
