@@ -39,13 +39,13 @@ export class UserCourseClient {
 
   async updateCourseTopicStatus(topicId: any, status: string) {
     let url = `${this.API_URL}v1/usercoursetopics/topics/${topicId}/status/${status}`;
-    let response = await axios.post(url, { headers: this.headers });
+    let response = await axios.post(url, null, { headers: this.headers });
     return response.data;
   }
 
   async updateTopicReviewStatus(topic: any, status: string) {
     let url = `${this.API_URL}v1/usercoursetopics/topics/${topic.userTopicId}/review/${status}`;
-    let response = await axios.post(url, { headers: this.headers });
+    let response = await axios.post(url, null, { headers: this.headers });
     return response.data;
   }
   async addCourseTopic(
@@ -55,14 +55,20 @@ export class UserCourseClient {
     userId: string
   ) {
     let url = `${this.API_URL}v1/usercoursetopics/${courseId}/topics/${topicId}/${status}/${userId}`;
-    let response = await axios.post(url, { headers: this.headers });
+    let response = await axios.post(url, null, { headers: this.headers });
     return response.data;
   }
 
   async enrollCourse(userId: string, courseId: string) {
     let formData = { userId: userId, courseId: courseId };
     let url = `${this.API_URL}v1/usercourses`;
-    let response = await axios.get(url, { headers: this.headers });
+    let response = await axios.post(url, formData, { headers: this.headers });
+    return response.data;
+  }
+
+  async assignTopic(usertopic: any) {
+    let url = `${this.API_URL}v1/usercoursetopics/assignTopic`;
+    let response = await axios.post(url, usertopic, { headers: this.headers });
     return response.data;
   }
 

@@ -16,6 +16,7 @@ export declare class UserCourseClient {
     updateTopicReviewStatus(topic: any, status: string): Promise<any>;
     addCourseTopic(courseId: string, topicId: string, status: string, userId: string): Promise<any>;
     enrollCourse(userId: string, courseId: string): Promise<any>;
+    assignTopic(usertopic: any): Promise<any>;
     /**
      * Merge course data with user course data
      * @param courseData

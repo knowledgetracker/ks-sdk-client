@@ -44,21 +44,21 @@ export class UserCourseClient {
     updateCourseTopicStatus(topicId, status) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/usercoursetopics/topics/${topicId}/status/${status}`;
-            let response = yield axios.post(url, { headers: this.headers });
+            let response = yield axios.post(url, null, { headers: this.headers });
             return response.data;
         });
     }
     updateTopicReviewStatus(topic, status) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/usercoursetopics/topics/${topic.userTopicId}/review/${status}`;
-            let response = yield axios.post(url, { headers: this.headers });
+            let response = yield axios.post(url, null, { headers: this.headers });
             return response.data;
         });
     }
     addCourseTopic(courseId, topicId, status, userId) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/usercoursetopics/${courseId}/topics/${topicId}/${status}/${userId}`;
-            let response = yield axios.post(url, { headers: this.headers });
+            let response = yield axios.post(url, null, { headers: this.headers });
             return response.data;
         });
     }
@@ -66,7 +66,14 @@ export class UserCourseClient {
         return __awaiter(this, void 0, void 0, function* () {
             let formData = { userId: userId, courseId: courseId };
             let url = `${this.API_URL}v1/usercourses`;
-            let response = yield axios.get(url, { headers: this.headers });
+            let response = yield axios.post(url, formData, { headers: this.headers });
+            return response.data;
+        });
+    }
+    assignTopic(usertopic) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/usercoursetopics/assignTopic`;
+            let response = yield axios.post(url, usertopic, { headers: this.headers });
             return response.data;
         });
     }
