@@ -16,6 +16,13 @@ export class UserCourseClient {
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
+
+  async getEnrolledCourses(userId:string) {
+    let url = `${this.API_URL}v1/usercourses/users/${userId}`;
+    let response = await axios.get(url, { headers: this.headers });
+    return response.data;
+  }
+
   /**
    * If topic does not exists, add Course Topic else update topic status
    * @param courseId

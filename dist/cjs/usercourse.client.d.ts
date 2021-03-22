@@ -4,6 +4,7 @@ export declare class UserCourseClient {
     API_URL: string;
     constructor(config?: any);
     getCourseTopics(courseId: string, userId: string): Promise<any>;
+    getEnrolledCourses(userId: string): Promise<any>;
     /**
      * If topic does not exists, add Course Topic else update topic status
      * @param courseId

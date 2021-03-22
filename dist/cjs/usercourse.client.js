@@ -29,6 +29,13 @@ class UserCourseClient {
             return response.data;
         });
     }
+    getEnrolledCourses(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/usercourses/users/${userId}`;
+            let response = yield axios_1.default.get(url, { headers: this.headers });
+            return response.data;
+        });
+    }
     /**
      * If topic does not exists, add Course Topic else update topic status
      * @param courseId
