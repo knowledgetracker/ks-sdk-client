@@ -5,6 +5,7 @@ import { BatchClient } from "./batch.client";
 import { ProjectClient } from "./project.client";
 import { UserCourseClient } from "./usercourse.client";
 import { UserCourseReport } from "./usercourse-report";
+import { CategoryClient } from "./category.client";
 export {
   CourseClient,
   UserClient,
@@ -13,4 +14,5 @@ export {
   ProjectClient,
   UserCourseClient,
   UserCourseReport,
+  CategoryClient
 };
