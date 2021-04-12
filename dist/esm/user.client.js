@@ -7,18 +7,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { API_ENVIRONMENT } from "./config";
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
 export class UserClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
     }
-    static list() {
+    getUsers(orgId, role) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${USER_API_URL}v1/users?role=U`;
-            let response = yield axios.get(url);
+            let url = `${this.API_URL}v1/users?role=${role}&org=${orgId}`;
+            let response = yield axios.get(url, { headers: this.headers });
+            return response.data;
+        });
+    }
+    getUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/users/${id}`;
+            let response = yield axios.get(url, { headers: this.headers });
+            return response.data;
+        });
+    }
+    addUser(category) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/categories`;
+            let response = yield axios.post(url, category, { headers: this.headers });
+            return response.data;
+        });
+    }
+    deleteCategory(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/categories/${id}`;
+            let response = yield axios.delete(url, { headers: this.headers });
             return response.data;
         });
     }

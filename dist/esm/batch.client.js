@@ -45,9 +45,9 @@ export class BatchClient {
             return response.data;
         });
     }
-    getBatches() {
+    getBatches(orgId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batches`;
+            let url = `${this.API_URL}v1/batches?org=${orgId}`;
             let response = yield axios.get(url, { headers: this.headers });
             return response.data;
         });

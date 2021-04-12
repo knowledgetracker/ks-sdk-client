@@ -1,5 +1,5 @@
+import { API_ENVIRONMENT } from "./config";
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
 export class UserClient {
   headers: any;
   API_URL: string;
@@ -10,9 +10,30 @@ export class UserClient {
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
   }
 
-  static async list() {
-    let url = `${USER_API_URL}v1/users?role=U`;
-    let response = await axios.get(url);
+  
+
+  async getUsers(orgId:string,role:string) {
+    let url = `${this.API_URL}v1/users?role=${role}&org=${orgId}`;
+    let response = await axios.get(url, { headers: this.headers });
+    return response.data;
+  }
+
+  
+  async getUser(id:any) {
+    let url = `${this.API_URL}v1/users/${id}`;
+    let response = await axios.get(url, { headers: this.headers });
+    return response.data;
+  }
+
+  async addUser( category:any) {
+    let url = `${this.API_URL}v1/categories`;
+    let response = await axios.post(url,category, { headers: this.headers });
+    return response.data;
+  }
+
+  async deleteCategory( id:any) {
+    let url = `${this.API_URL}v1/categories/${id}`;
+    let response = await axios.delete(url, { headers: this.headers });
     return response.data;
   }
 }
