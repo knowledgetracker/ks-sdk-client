@@ -14,7 +14,7 @@ export class CourseClient {
 
   async list(orgId:any = null) {
 
-    let url = `${this.API_URL}v1/courses` + orgId !=null ? "?org="+orgId :'';
+    let url = `${this.API_URL}v1/courses?orgId=${orgId}`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }

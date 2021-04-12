@@ -22,9 +22,9 @@ class CategoryClient {
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
-    getCategories() {
+    getCategories(orgId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/categories`;
+            let url = `${this.API_URL}v1/categories?org=${orgId}`;
             let response = yield axios_1.default.get(url, { headers: this.headers });
             return response.data;
         });
