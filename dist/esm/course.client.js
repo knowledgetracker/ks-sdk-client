@@ -16,9 +16,9 @@ export class CourseClient {
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
     }
-    list() {
+    list(orgId = null) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/courses`;
+            let url = `${this.API_URL}v1/courses` + orgId != null ? "?org=" + orgId : '';
             let response = yield axios.get(url, { headers: this.headers });
             return response.data;
         });

@@ -3,7 +3,7 @@ export declare class CourseClient {
     API_URL: string;
     COURSE_SERVER_URL: string;
     constructor(config?: any);
-    list(): Promise<any>;
+    list(orgId?: any): Promise<any>;
     findOne(id: any): Promise<any>;
     listModules(courseId: any): Promise<any>;
     listSections(courseId: any): Promise<any>;

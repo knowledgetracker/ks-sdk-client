@@ -12,8 +12,9 @@ export class CourseClient {
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
   }
 
-  async list() {
-    let url = `${this.API_URL}v1/courses`;
+  async list(orgId:any = null) {
+
+    let url = `${this.API_URL}v1/courses` + orgId !=null ? "?org="+orgId :'';
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
