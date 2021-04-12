@@ -6,6 +6,7 @@ import { ProjectClient } from "./project.client";
 import { UserCourseClient } from "./usercourse.client";
 import { UserCourseReport } from "./usercourse-report";
 import { CategoryClient } from "./category.client";
+import { CoachClient } from "./coach.client";
 export {
   CourseClient,
   UserClient,
@@ -14,5 +15,6 @@ export {
   ProjectClient,
   UserCourseClient,
   UserCourseReport,
-  CategoryClient
+  CategoryClient,
+  CoachClient
 };
