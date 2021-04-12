@@ -261,4 +261,11 @@ export class CourseClient {
     let topics = await axios.get(url);
     return topics.data;
   }
+
+  async getUsers(orgId:string, courseId: string) {
+    let url = `${this.API_URL}v1/courses/${courseId}/users?org=${orgId}`;    
+    //return this.http.get(url, { headers: this.getHeaders() });
+    let topics = await axios.get(url);
+    return topics.data;
+  }
 }

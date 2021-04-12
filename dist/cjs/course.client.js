@@ -304,5 +304,13 @@ class CourseClient {
             return topics.data;
         });
     }
+    getUsers(orgId, courseId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/courses/${courseId}/users?org=${orgId}`;
+            //return this.http.get(url, { headers: this.getHeaders() });
+            let topics = yield axios_1.default.get(url);
+            return topics.data;
+        });
+    }
 }
 exports.CourseClient = CourseClient;

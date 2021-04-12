@@ -37,4 +37,5 @@ export declare class CourseClient {
     deleteCourseQuestion(courseId: any, contentId: any): Promise<any>;
     importCourseQuestion(id: any, content: any): Promise<any>;
     listS3CourseTopics(courseId: string): Promise<any>;
+    getUsers(orgId: string, courseId: string): Promise<any>;
 }
