@@ -8,40 +8,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoachClient = void 0;
-const config_1 = require("../config");
-const axios_1 = __importDefault(require("axios"));
-const api_1 = __importDefault(require("../api"));
+const api_1 = require("../api");
 const rxjs_1 = require("rxjs");
 class CoachClient {
-    constructor(config = {}) {
+    constructor(apiUrl, orgId, accessToken) {
         this.getCoaches = () => {
-            const response = api_1.default.get(this.url, { headers: this.headers });
+            const response = this.axiosWrapper.get('v1/coaches');
             return rxjs_1.from(response);
         };
         this.getCoach = (id) => {
-            const response = api_1.default.get(`${this.url}/${id}`, { headers: this.headers });
+            const response = this.axiosWrapper.get(`v1/coaches/${id}`);
             return rxjs_1.of(response);
         };
         this.addCoach = (coach) => {
-            let url = `${this.API_URL}v1/coaches`;
-            let response = api_1.default.post(url, coach, { headers: this.headers });
+            let response = this.axiosWrapper.post(`v1/coaches`, coach);
             return rxjs_1.of(response);
         };
-        this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        this.API_URL =
-            config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
-        this.url = `${this.API_URL}v1/coaches`;
+        this.axiosWrapper = new api_1.AxiosWrapper(apiUrl, orgId, accessToken);
     }
     deleteCoach(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches/${id}`;
-            let response = yield axios_1.default.delete(url, { headers: this.headers });
-            return response.data;
+            let response = yield this.axiosWrapper.deleteR(`v1/coaches`, id);
+            return rxjs_1.of(response);
         });
     }
 }

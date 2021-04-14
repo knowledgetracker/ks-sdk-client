@@ -7,35 +7,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { API_ENVIRONMENT } from "../config";
-import axios from "axios";
-import api from "../api";
+import { AxiosWrapper } from "../api";
 import { from, of } from "rxjs";
 export class CoachClient {
-    constructor(config = {}) {
+    constructor(apiUrl, orgId, accessToken) {
         this.getCoaches = () => {
-            const response = api.get(this.url, { headers: this.headers });
+            const response = this.axiosWrapper.get('v1/coaches');
             return from(response);
         };
         this.getCoach = (id) => {
-            const response = api.get(`${this.url}/${id}`, { headers: this.headers });
+            const response = this.axiosWrapper.get(`v1/coaches/${id}`);
             return of(response);
         };
         this.addCoach = (coach) => {
-            let url = `${this.API_URL}v1/coaches`;
-            let response = api.post(url, coach, { headers: this.headers });
+            let response = this.axiosWrapper.post(`v1/coaches`, coach);
             return of(response);
         };
-        this.headers = config === null || config === void 0 ? void 0 : config.headers;
-        this.API_URL =
-            config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
-        this.url = `${this.API_URL}v1/coaches`;
+        this.axiosWrapper = new AxiosWrapper(apiUrl, orgId, accessToken);
     }
     deleteCoach(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches/${id}`;
-            let response = yield axios.delete(url, { headers: this.headers });
-            return response.data;
+            let response = yield this.axiosWrapper.deleteR(`v1/coaches`, id);
+            return of(response);
         });
     }
 }

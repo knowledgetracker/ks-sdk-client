@@ -3,40 +3,56 @@ import {defer, Observable} from 'rxjs';
 
 import { map } from 'rxjs/operators';
 
-export const axiosRequestConfiguration: AxiosRequestConfig = {
-  //baseURL: 'http://localhost:3000',
-  responseType: 'json',
-  headers: {
-      'Content-Type': 'application/json',
-  },
-};
+export class AxiosWrapper {
+    
+    axiosInstance;
+    
+    constructor(baseURL:string, tenantId? : string, token?:string){
 
-const axiosInstance = axios.create(axiosRequestConfiguration);
+        let headers =  {
+            'Content-Type': 'application/json',
+            'Org':tenantId            
+        }
+        if(token){
+            headers = Object.assign(headers,{'Authorization': `Bearer ${token}`});
+        }
+        let axiosRequestConfiguration:AxiosRequestConfig = {
+            baseURL: baseURL,
+            responseType: 'json',
+            headers:headers
+          };
 
-const get = <T>(url: string, queryParams?: object): Observable<T> => {
-    return defer(()=> axiosInstance.get<T>(url, { params: queryParams }))
+          this.axiosInstance = axios.create(axiosRequestConfiguration);
+          
+    }
+
+
+
+ get = <T>(url: string, queryParams?: object): Observable<T> => {
+    return defer(()=> this.axiosInstance.get<T>(url, { params: queryParams }))
         .pipe(map(result => result.data));
 };
 
-const post = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
-    return defer(()=> axiosInstance.post<T>(url, body, { params: queryParams }))
+ post = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
+    return defer(()=> this.axiosInstance.post<T>(url, body, { params: queryParams }))
         .pipe(map(result => result.data));
 };
 
-const put = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
-    return defer(()=>axiosInstance.put<T>(url, body, { params: queryParams }))
+put = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
+    return defer(()=> this.axiosInstance.put<T>(url, body, { params: queryParams }))
         .pipe(map(result => result.data));
 };
 
-const patch = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
-    return defer(()=> axiosInstance.patch<T>(url, body, { params: queryParams }))
+patch = <T>(url: string, body: object, queryParams?: object): Observable<T | void> => {
+    return defer(()=> this.axiosInstance.patch<T>(url, body, { params: queryParams }))
         .pipe(map(result => result.data));
 };
 
-const deleteR = <T>(url: string, id:number): Observable<T | void> => {
-    return defer(() => (axiosInstance.delete(`${url}/${id}` )))
+deleteR = <T>(url: string, id:number): Observable<T | void> => {
+    return defer(() => (this.axiosInstance.delete(`${url}/${id}` )))
         .pipe(map(result => result.data)
     );
 };
+}
 
-export default { get, post, put, patch, delete: deleteR };
+//export default { get, post, put, patch, delete: deleteR };
