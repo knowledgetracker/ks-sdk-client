@@ -6,5 +6,5 @@ import { ProjectClient } from "./project.client";
 import { UserCourseClient } from "./usercourse.client";
 import { UserCourseReport } from "./usercourse-report";
 import { CategoryClient } from "./category.client";
-import { CoachClient } from "./coach.client";
+import { CoachClient } from "./coach/coach.client";
 export { CourseClient, UserClient, AuthClient, BatchClient, ProjectClient, UserCourseClient, UserCourseReport, CategoryClient, CoachClient };

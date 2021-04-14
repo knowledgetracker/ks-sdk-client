@@ -17,5 +17,5 @@ const usercourse_report_1 = require("./usercourse-report");
 Object.defineProperty(exports, "UserCourseReport", { enumerable: true, get: function () { return usercourse_report_1.UserCourseReport; } });
 const category_client_1 = require("./category.client");
 Object.defineProperty(exports, "CategoryClient", { enumerable: true, get: function () { return category_client_1.CategoryClient; } });
-const coach_client_1 = require("./coach.client");
+const coach_client_1 = require("./coach/coach.client");
 Object.defineProperty(exports, "CoachClient", { enumerable: true, get: function () { return coach_client_1.CoachClient; } });
