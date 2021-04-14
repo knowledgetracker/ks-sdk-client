@@ -21,6 +21,7 @@ export class CoachClient {
             const response = api.get(`${this.url}/${id}`, { headers: this.headers });
             return of(response);
         };
+        this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
         this.url = `${this.API_URL}v1/coaches`;

@@ -27,6 +27,7 @@ class CoachClient {
             const response = api_1.default.get(`${this.url}/${id}`, { headers: this.headers });
             return rxjs_1.of(response);
         };
+        this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
         this.url = `${this.API_URL}v1/coaches`;

@@ -9,6 +9,7 @@ export class CoachClient {
   API_URL: string;
   url:string;
   constructor(config: any = {}) {
+    this.headers = config?.headers;
     this.API_URL =
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
     this.url = `${this.API_URL}v1/coaches`;
