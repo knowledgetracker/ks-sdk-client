@@ -10,28 +10,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { API_ENVIRONMENT } from "../config";
 import axios from "axios";
 import api from "../api";
-import { of } from "rxjs";
+import { from, of } from "rxjs";
 export class CoachClient {
     constructor(config = {}) {
         this.getCoaches = () => {
             const response = api.get(this.url, { headers: this.headers });
-            return of(response);
+            return from(response);
         };
         this.getCoach = (id) => {
             const response = api.get(`${this.url}/${id}`, { headers: this.headers });
+            return of(response);
+        };
+        this.addCoach = (coach) => {
+            let url = `${this.API_URL}v1/coaches`;
+            let response = api.post(url, coach, { headers: this.headers });
             return of(response);
         };
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
         this.url = `${this.API_URL}v1/coaches`;
-    }
-    addCoach(orgId, coach) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches`;
-            let response = yield axios.post(url, coach, { headers: this.headers });
-            return response.data;
-        });
     }
     deleteCoach(id) {
         return __awaiter(this, void 0, void 0, function* () {

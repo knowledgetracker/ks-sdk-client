@@ -21,23 +21,21 @@ class CoachClient {
     constructor(config = {}) {
         this.getCoaches = () => {
             const response = api_1.default.get(this.url, { headers: this.headers });
-            return rxjs_1.of(response);
+            return rxjs_1.from(response);
         };
         this.getCoach = (id) => {
             const response = api_1.default.get(`${this.url}/${id}`, { headers: this.headers });
+            return rxjs_1.of(response);
+        };
+        this.addCoach = (coach) => {
+            let url = `${this.API_URL}v1/coaches`;
+            let response = api_1.default.post(url, coach, { headers: this.headers });
             return rxjs_1.of(response);
         };
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
         this.url = `${this.API_URL}v1/coaches`;
-    }
-    addCoach(orgId, coach) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches`;
-            let response = yield axios_1.default.post(url, coach, { headers: this.headers });
-            return response.data;
-        });
     }
     deleteCoach(id) {
         return __awaiter(this, void 0, void 0, function* () {

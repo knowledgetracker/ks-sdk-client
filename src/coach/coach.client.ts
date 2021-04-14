@@ -2,7 +2,7 @@ import { API_ENVIRONMENT } from "../config";
 import axios from "axios";
 import api from "../api";
 import { catchError } from "rxjs/operators";
-import { Observable, of } from "rxjs";
+import { from, Observable, of } from "rxjs";
 
 export class CoachClient {
   headers: any;
@@ -20,7 +20,7 @@ export class CoachClient {
   getCoaches = (): Observable<any> =>  {
     
     const response = api.get(this.url ,{ headers: this.headers });
-    return of(response);
+    return from(response);
   }
   
   getCoach=(id:any):Observable<any>=> {    
@@ -28,10 +28,10 @@ export class CoachClient {
     return of(response);
   }
 
-  async addCoach( orgId:string, coach:any) {
+  addCoach = ( coach:any) =>{
     let url = `${this.API_URL}v1/coaches`;
-    let response = await axios.post(url,coach, { headers: this.headers });
-    return response.data;
+    let response = api.post(url,coach, { headers: this.headers });
+    return of(response);
   }
 
   async deleteCoach( id:any) {
