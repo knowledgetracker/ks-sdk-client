@@ -16,15 +16,11 @@ export class AuthClient {
     return response.data;
   }
 
-  async getUsers(user: any) {
-    let url = `${this.API_URL}v1/users?role=U`;
+  
+  async register(user: any) {
+    let url = `${this.API_URL}v1/auth/register`;
     let response = await axios.post(url, user, { headers: this.headers });
     return response.data;
   }
 
-  async getUser(userId: any) {
-    let url = this.API_URL + `v1/users/${userId}`;
-    let response = await axios.get(url, { headers: this.headers });
-    return response.data;
-  }
 }

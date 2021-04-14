@@ -11,8 +11,8 @@ export class CoachClient {
 
   
 
-  async getCoaches(orgId:string) {
-    let url = `${this.API_URL}v1/coaches?org=${orgId}`;
+  async getCoaches() {
+    let url = `${this.API_URL}v1/coaches`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
@@ -25,7 +25,7 @@ export class CoachClient {
   }
 
   async addCoach( orgId:string, coach:any) {
-    let url = `${this.API_URL}v1/coaches?org=${orgId}`;
+    let url = `${this.API_URL}v1/coaches`;
     let response = await axios.post(url,coach, { headers: this.headers });
     return response.data;
   }

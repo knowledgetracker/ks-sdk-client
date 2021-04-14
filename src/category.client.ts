@@ -14,8 +14,8 @@ export class CategoryClient {
 
   
 
-  async getCategories(orgId:string) {
-    let url = `${this.API_URL}v1/categories?org=${orgId}`;
+  async getCategories() {
+    let url = `${this.API_URL}v1/categories`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }

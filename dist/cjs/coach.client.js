@@ -21,9 +21,9 @@ class CoachClient {
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
-    getCoaches(orgId) {
+    getCoaches() {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches?org=${orgId}`;
+            let url = `${this.API_URL}v1/coaches`;
             let response = yield axios_1.default.get(url, { headers: this.headers });
             return response.data;
         });
@@ -37,7 +37,7 @@ class CoachClient {
     }
     addCoach(orgId, coach) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/coaches?org=${orgId}`;
+            let url = `${this.API_URL}v1/coaches`;
             let response = yield axios_1.default.post(url, coach, { headers: this.headers });
             return response.data;
         });
