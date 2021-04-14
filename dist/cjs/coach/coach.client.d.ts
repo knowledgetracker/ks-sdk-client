@@ -5,6 +5,6 @@ export declare class CoachClient {
     constructor(apiUrl: string, orgId?: string, accessToken?: string);
     getCoaches: () => Observable<any>;
     getCoach: (id: any) => Observable<any>;
-    addCoach: (coach: any) => Observable<Observable<unknown>>;
-    deleteCoach(id: any): Promise<Observable<Observable<unknown>>>;
+    addCoach: (coach: any) => Observable<unknown>;
+    deleteCoach(id: any): Promise<Observable<unknown>>;
 }

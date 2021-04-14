@@ -20,18 +20,18 @@ class CoachClient {
         };
         this.getCoach = (id) => {
             const response = this.axiosWrapper.get(`v1/coaches/${id}`);
-            return rxjs_1.of(response);
+            return rxjs_1.from(response);
         };
         this.addCoach = (coach) => {
             let response = this.axiosWrapper.post(`v1/coaches`, coach);
-            return rxjs_1.of(response);
+            return rxjs_1.from(response);
         };
         this.axiosWrapper = new api_1.AxiosWrapper(apiUrl, orgId, accessToken);
     }
     deleteCoach(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let response = yield this.axiosWrapper.deleteR(`v1/coaches`, id);
-            return rxjs_1.of(response);
+            return rxjs_1.from(response);
         });
     }
 }

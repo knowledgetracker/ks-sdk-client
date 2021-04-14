@@ -22,18 +22,18 @@ export class CoachClient {
   
   getCoach=(id:any):Observable<any>=> {    
     const response = this.axiosWrapper.get(`v1/coaches/${id}`);
-    return of(response);
+    return from(response);
   }
 
   addCoach = ( coach:any) =>{
     
     let response = this.axiosWrapper.post(`v1/coaches`,coach);
-    return of(response);
+    return from(response);
   }
 
   async deleteCoach( id:any) {
     
     let response = await this.axiosWrapper.deleteR(`v1/coaches`,id);
-    return of(response);
+    return from(response);
   }
 }
