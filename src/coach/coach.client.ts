@@ -6,13 +6,10 @@ import { from, Observable, of } from "rxjs";
 export class CoachClient {
   axiosWrapper: AxiosWrapper;
   
-  constructor(apiUrl:string,orgId?:string,accessToken?:string) {  
-    
-    this.axiosWrapper = new AxiosWrapper(apiUrl, orgId, accessToken);
-    
+  constructor(environment:string='DEV',orgId?:string,accessToken?:string) {  
+    let apiUrl = environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
+    this.axiosWrapper = new AxiosWrapper(apiUrl, orgId, accessToken);    
   }
-
-  
 
   getCoaches = (): Observable<any> =>  {
     

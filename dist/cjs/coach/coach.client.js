@@ -10,10 +10,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CoachClient = void 0;
+const config_1 = require("../config");
 const api_1 = require("../api");
 const rxjs_1 = require("rxjs");
 class CoachClient {
-    constructor(apiUrl, orgId, accessToken) {
+    constructor(environment = 'DEV', orgId, accessToken) {
         this.getCoaches = () => {
             const response = this.axiosWrapper.get('v1/coaches');
             return rxjs_1.from(response);
@@ -26,6 +27,7 @@ class CoachClient {
             let response = this.axiosWrapper.post(`v1/coaches`, coach);
             return rxjs_1.from(response);
         };
+        let apiUrl = environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
         this.axiosWrapper = new api_1.AxiosWrapper(apiUrl, orgId, accessToken);
     }
     deleteCoach(id) {

@@ -119,7 +119,7 @@ class BatchClient {
     getBatchActivities(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batches/${id}/activity`;
-            let response = yield axios_1.default.delete(url, { headers: this.headers });
+            let response = yield axios_1.default.get(url, { headers: this.headers });
             return response.data;
         });
     }

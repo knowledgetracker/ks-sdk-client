@@ -94,7 +94,7 @@ export class BatchClient {
 
   async getBatchActivities(id: any) {
     let url = `${this.API_URL}v1/batches/${id}/activity`;
-    let response = await axios.delete(url, { headers: this.headers });
+    let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
 

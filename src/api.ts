@@ -9,13 +9,14 @@ export class AxiosWrapper {
     
     constructor(baseURL:string, tenantId? : string, token?:string){
 
-        let headers =  {
+        let headers:any =  {
             'Content-Type': 'application/json',
-            'Org':tenantId            
+            'org':tenantId            
         }
         if(token){
-            headers = Object.assign(headers,{'Authorization': `Bearer ${token}`});
+            headers['Authorization']= `Bearer ${token}`;
         }
+        console.log(headers);
         let axiosRequestConfiguration:AxiosRequestConfig = {
             baseURL: baseURL,
             responseType: 'json',

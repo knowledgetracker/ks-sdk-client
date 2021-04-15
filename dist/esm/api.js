@@ -25,11 +25,12 @@ export class AxiosWrapper {
         };
         let headers = {
             'Content-Type': 'application/json',
-            'Org': tenantId
+            'org': tenantId
         };
         if (token) {
-            headers = Object.assign(headers, { 'Authorization': `Bearer ${token}` });
+            headers['Authorization'] = `Bearer ${token}`;
         }
+        console.log(headers);
         let axiosRequestConfiguration = {
             baseURL: baseURL,
             responseType: 'json',
