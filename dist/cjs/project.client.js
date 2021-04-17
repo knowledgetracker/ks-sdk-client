@@ -20,8 +20,8 @@ class ProjectClient {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV"
-                ? config_1.NODE_API_ENVIRONMENT.DEV
-                : config_1.NODE_API_ENVIRONMENT.PROD;
+                ? config_1.PROJECT_API_URL.DEV
+                : config_1.PROJECT_API_URL.PROD;
     }
     getMyProjects(userId) {
         return __awaiter(this, void 0, void 0, function* () {

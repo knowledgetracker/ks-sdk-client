@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ENVIRONMENT, NODE_API_ENVIRONMENT } from "./config";
+import { API_ENVIRONMENT,  PROJECT_API_URL } from "./config";
 export class ProjectClient {
   headers: any;
   API_URL: string;
@@ -8,8 +8,8 @@ export class ProjectClient {
     this.headers = config?.headers;
     this.API_URL =
       config.environment === "DEV"
-        ? NODE_API_ENVIRONMENT.DEV
-        : NODE_API_ENVIRONMENT.PROD;
+        ? PROJECT_API_URL.DEV
+        : PROJECT_API_URL.PROD;
   }
 
   async getMyProjects(userId: string) {

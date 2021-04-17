@@ -3,9 +3,8 @@ export const API_ENVIRONMENT = {
   PROD: "https://knowledgetracker-java-api.herokuapp.com/api/",
 };
 
-export const NODE_API_ENVIRONMENT = {
+export const PROJECT_API_URL = {
   DEV: "http://localhost:8080/api/",
-  PROD: "https://knowledgetracker-api.herokuapp.com/api/",
+  PROD: "https://projecttracker-api.herokuapp.com/api/",
 };
 
-export const USER_API_URL = "https://knowledgetracker-api.herokuapp.com/api/";

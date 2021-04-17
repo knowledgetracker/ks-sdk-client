@@ -8,14 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import axios from "axios";
-import { NODE_API_ENVIRONMENT } from "./config";
+import { PROJECT_API_URL } from "./config";
 export class ProjectClient {
     constructor(config = {}) {
         this.headers = config === null || config === void 0 ? void 0 : config.headers;
         this.API_URL =
             config.environment === "DEV"
-                ? NODE_API_ENVIRONMENT.DEV
-                : NODE_API_ENVIRONMENT.PROD;
+                ? PROJECT_API_URL.DEV
+                : PROJECT_API_URL.PROD;
     }
     getMyProjects(userId) {
         return __awaiter(this, void 0, void 0, function* () {

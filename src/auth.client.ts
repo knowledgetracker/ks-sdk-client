@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ENVIRONMENT, USER_API_URL } from "./config";
+import { API_ENVIRONMENT } from "./config";
 export class AuthClient {
   headers: any;
   API_URL: string;
