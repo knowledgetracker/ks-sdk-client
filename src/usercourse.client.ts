@@ -44,15 +44,19 @@ export class UserCourseClient {
     }
   }
 
-  async updateCourseTopicStatus(topicId: any, status: string) {
-    let url = `${this.API_URL}v1/usercoursetopics/topics/${topicId}/status/${status}`;
-    let response = await axios.post(url, null, { headers: this.headers });
+  async updateCourseTopicStatus(id: number, status: string) {
+    let url = `${this.API_URL}v1/usercoursetopics/${id}`;
+    let data = { status: status};
+    let response = await axios.patch(url, data, { headers: this.headers });
     return response.data;
   }
 
   async updateTopicReviewStatus(topic: any, status: string) {
-    let url = `${this.API_URL}v1/usercoursetopics/topics/${topic.userTopicId}/review/${status}`;
-    let response = await axios.post(url, null, { headers: this.headers });
+    let url = `${this.API_URL}v1/usercoursetopics/${topic.userTopicId}/review`;
+    let data = {
+       status: status
+    };
+    let response = await axios.patch(url, data, { headers: this.headers });
     return response.data;
   }
   async addCourseTopic(
@@ -61,8 +65,14 @@ export class UserCourseClient {
     status: string,
     userId: string
   ) {
-    let url = `${this.API_URL}v1/usercoursetopics/${courseId}/topics/${topicId}/${status}/${userId}`;
-    let response = await axios.post(url, null, { headers: this.headers });
+    let url = `${this.API_URL}v1/usercoursetopics`;
+    let data = {
+      courseId: courseId,
+      topicId: topicId,
+      status: status,
+      userId: userId
+    }
+    let response = await axios.post(url, data, { headers: this.headers });
     return response.data;
   }
 

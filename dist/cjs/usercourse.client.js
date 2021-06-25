@@ -54,24 +54,34 @@ class UserCourseClient {
             }
         });
     }
-    updateCourseTopicStatus(topicId, status) {
+    updateCourseTopicStatus(id, status) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/usercoursetopics/topics/${topicId}/status/${status}`;
-            let response = yield axios_1.default.post(url, null, { headers: this.headers });
+            let url = `${this.API_URL}v1/usercoursetopics/${id}`;
+            let data = { status: status };
+            let response = yield axios_1.default.patch(url, data, { headers: this.headers });
             return response.data;
         });
     }
     updateTopicReviewStatus(topic, status) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/usercoursetopics/topics/${topic.userTopicId}/review/${status}`;
-            let response = yield axios_1.default.post(url, null, { headers: this.headers });
+            let url = `${this.API_URL}v1/usercoursetopics/${topic.userTopicId}/review`;
+            let data = {
+                status: status
+            };
+            let response = yield axios_1.default.patch(url, data, { headers: this.headers });
             return response.data;
         });
     }
     addCourseTopic(courseId, topicId, status, userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/usercoursetopics/${courseId}/topics/${topicId}/${status}/${userId}`;
-            let response = yield axios_1.default.post(url, null, { headers: this.headers });
+            let url = `${this.API_URL}v1/usercoursetopics`;
+            let data = {
+                courseId: courseId,
+                topicId: topicId,
+                status: status,
+                userId: userId
+            };
+            let response = yield axios_1.default.post(url, data, { headers: this.headers });
             return response.data;
         });
     }

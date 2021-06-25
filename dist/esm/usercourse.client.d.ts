@@ -14,7 +14,7 @@ export declare class UserCourseClient {
      * @returns
      */
     updateTopicStatus(courseId: string, topic: any, status: string, userId: string): Promise<any>;
-    updateCourseTopicStatus(topicId: any, status: string): Promise<any>;
+    updateCourseTopicStatus(id: number, status: string): Promise<any>;
     updateTopicReviewStatus(topic: any, status: string): Promise<any>;
     addCourseTopic(courseId: string, topicId: string, status: string, userId: string): Promise<any>;
     enrollCourse(userId: string, courseId: string): Promise<any>;
