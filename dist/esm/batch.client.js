@@ -169,9 +169,9 @@ export class BatchClient {
             let completed = 0;
             let pending = 0;
             for (let c of courses) {
-                completed += c.completed_topics;
-                pending += c.pending_topics;
-                total += c.pending_topics + c.completed_topics;
+                completed += parseInt(c.completedTopics);
+                pending += parseInt(c.pendingTopics);
+                total += parseInt(c.pendingTopics) + parseInt(c.completedTopics);
             }
             let percentage = 0;
             if (total > 0) {
