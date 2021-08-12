@@ -52,6 +52,13 @@ export class BatchClient {
             return response.data;
         });
     }
+    getAllBatches() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/batches`;
+            let response = yield axios.get(url, { headers: this.headers });
+            return response.data;
+        });
+    }
     getBatch(id) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batches/${id}`;
@@ -119,7 +126,7 @@ export class BatchClient {
     }
     getBatchCourseTopics(batchId, courseId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batchcoursetopics/${courseId}/batches/${batchId}`;
+            let url = `${this.API_URL}v1/batches/${batchId}/courses/${courseId}/topics`;
             let response = yield axios.get(url, { headers: this.headers });
             return response.data;
         });

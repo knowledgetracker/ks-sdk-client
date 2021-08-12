@@ -7,6 +7,7 @@ export declare class BatchClient {
     updateBatchCourse(id: any, batchcourse: any): Promise<any>;
     deleteBatch(id: any): Promise<any>;
     getBatches(orgId: string): Promise<any>;
+    getAllBatches(): Promise<any>;
     getBatch(id: any): Promise<any>;
     getBatchUsers(id: any): Promise<any>;
     getBatchCourses(id: any): Promise<any>;

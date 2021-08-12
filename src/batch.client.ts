@@ -42,6 +42,13 @@ export class BatchClient {
     return response.data;
   }
 
+  async getAllBatches() {
+    let url = `${this.API_URL}v1/batches`;
+    let response = await axios.get(url, { headers: this.headers });
+    return response.data;
+  }
+
+
   async getBatch(id: any) {
     let url = `${this.API_URL}v1/batches/${id}`;
     let response = await axios.get(url, { headers: this.headers });
@@ -99,7 +106,7 @@ export class BatchClient {
   }
 
   async getBatchCourseTopics(batchId: any, courseId: any) {
-    let url = `${this.API_URL}v1/batchcoursetopics/${courseId}/batches/${batchId}`;
+    let url = `${this.API_URL}v1/batches/${batchId}/courses/${courseId}/topics`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
