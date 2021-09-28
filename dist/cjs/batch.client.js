@@ -144,6 +144,13 @@ class BatchClient {
             return response.data;
         });
     }
+    updateBatchTopic(batchTopic) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/batchcoursetopics/${batchTopic.id}`;
+            let response = yield axios_1.default.put(url, batchTopic, { headers: this.headers });
+            return response.data;
+        });
+    }
     updateBatchCoursePlan(id, userTopicId, planDate) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${userTopicId}/plan/${planDate}`;

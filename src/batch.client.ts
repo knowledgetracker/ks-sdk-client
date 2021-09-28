@@ -36,7 +36,7 @@ export class BatchClient {
     return response.data;
   }
 
-  async getBatches(orgId:string) {
+  async getBatches(orgId: string) {
     let url = `${this.API_URL}v1/batches?org=${orgId}`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
@@ -114,6 +114,12 @@ export class BatchClient {
   async updateBatchTopicStatus(topicId: any, courseId: any, status: any) {
     let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${topicId}/status/${status}?courseId=${courseId}`;
     let response = await axios.patch(url, null, { headers: this.headers });
+    return response.data;
+  }
+
+  async updateBatchTopic(batchTopic: any) {
+    let url = `${this.API_URL}v1/batchcoursetopics/${batchTopic.id}`;
+    let response = await axios.put(url, batchTopic, { headers: this.headers });
     return response.data;
   }
 
