@@ -145,10 +145,10 @@ export class BatchClient {
             return response.data;
         });
     }
-    updateBatchCoursePlan(id, userTopicId, planDate) {
+    updateBatchCoursePlan(batchTopic) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/batchcoursetopics/batchtopics/${userTopicId}/plan/${planDate}`;
-            let response = yield axios.patch(url, null, { headers: this.headers });
+            let url = `${this.API_URL}v1/batchcoursetopics/${batchTopic.id}/plan`;
+            let response = yield axios.put(url, batchTopic, { headers: this.headers });
             return response.data;
         });
     }
