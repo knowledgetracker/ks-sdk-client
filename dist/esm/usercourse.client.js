@@ -163,10 +163,10 @@ export class UserCourseClient {
             label: "Percentage",
             value: report.getPercentage() + "%",
         });
-        reportData.push({
-            label: "Project(%)",
-            value: report.getProjectPercentage() + "%",
-        });
+        // reportData.push({
+        //   label: "Project(%)",
+        //   value: report.getProjectPercentage() + "%",
+        // });
         return reportData;
     }
 }

@@ -17,7 +17,7 @@ export class UserCourseClient {
     return response.data;
   }
 
-  async getEnrolledCourses(userId:string) {
+  async getEnrolledCourses(userId: string) {
     let url = `${this.API_URL}v1/usercourses/users/${userId}`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
@@ -46,7 +46,7 @@ export class UserCourseClient {
 
   async updateCourseTopicStatus(id: number, status: string) {
     let url = `${this.API_URL}v1/usercoursetopics/${id}`;
-    let data = { status: status};
+    let data = { status: status };
     let response = await axios.patch(url, data, { headers: this.headers });
     return response.data;
   }
@@ -54,7 +54,7 @@ export class UserCourseClient {
   async updateTopicReviewStatus(topic: any, status: string) {
     let url = `${this.API_URL}v1/usercoursetopics/${topic.userTopicId}/review`;
     let data = {
-       status: status
+      status: status
     };
     let response = await axios.patch(url, data, { headers: this.headers });
     return response.data;
@@ -168,10 +168,12 @@ export class UserCourseClient {
       label: "Percentage",
       value: report.getPercentage() + "%",
     });
-    reportData.push({
-      label: "Project(%)",
-      value: report.getProjectPercentage() + "%",
-    });
+
+
+    // reportData.push({
+    //   label: "Project(%)",
+    //   value: report.getProjectPercentage() + "%",
+    // });
     return reportData;
   }
 }
