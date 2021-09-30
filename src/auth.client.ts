@@ -16,7 +16,13 @@ export class AuthClient {
     return response.data;
   }
 
-  
+  async adminLogin(user: any) {
+    let url = `${this.API_URL}v1/auth/adminlogin`;
+    let response = await axios.post(url, user, { headers: this.headers });
+    return response.data;
+  }
+
+
   async register(user: any) {
     let url = `${this.API_URL}v1/auth/register`;
     let response = await axios.post(url, user, { headers: this.headers });

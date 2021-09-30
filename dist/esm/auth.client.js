@@ -22,6 +22,13 @@ export class AuthClient {
             return response.data;
         });
     }
+    adminLogin(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/auth/adminlogin`;
+            let response = yield axios.post(url, user, { headers: this.headers });
+            return response.data;
+        });
+    }
     register(user) {
         return __awaiter(this, void 0, void 0, function* () {
             let url = `${this.API_URL}v1/auth/register`;

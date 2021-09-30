@@ -214,7 +214,10 @@ class BatchClient {
                 }
             }
             let hours = Math.ceil(totalDuration / 60);
-            let percentage = Math.round((100 * completed) / total);
+            let percentage = 0;
+            if (total > 0) {
+                percentage = Math.round((100 * completed) / total);
+            }
             reportData.push({ label: "Duration(Hrs)", value: hours });
             reportData.push({ label: "Topics", value: total });
             reportData.push({ label: "Completed", value: completed });
@@ -247,7 +250,10 @@ class BatchClient {
                 }
             }
             let hours = Math.ceil(totalDuration / 60);
-            let percentage = Math.round((100 * completed) / total);
+            let percentage = 0;
+            if (total > 0) {
+                percentage = Math.round((100 * completed) / total);
+            }
             reportData.push({ label: "Duration(Hrs)", value: hours });
             reportData.push({ label: "Topics", value: total });
             reportData.push({ label: "Completed", value: completed });
