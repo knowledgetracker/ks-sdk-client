@@ -36,18 +36,11 @@ export class BatchClient {
     return response.data;
   }
 
-  async getBatches(orgId: string) {
-    let url = `${this.API_URL}v1/batches?org=${orgId}`;
-    let response = await axios.get(url, { headers: this.headers });
-    return response.data;
-  }
-
-  async getAllBatches() {
+  async getBatches() {
     let url = `${this.API_URL}v1/batches`;
     let response = await axios.get(url, { headers: this.headers });
     return response.data;
   }
-
 
   async getBatch(id: any) {
     let url = `${this.API_URL}v1/batches/${id}`;

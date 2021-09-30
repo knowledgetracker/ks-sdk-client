@@ -12,7 +12,7 @@ export class CourseClient {
       config.environment === "DEV" ? API_ENVIRONMENT.DEV : API_ENVIRONMENT.PROD;
   }
 
-  async list(orgId:any = null) {
+  async list(orgId: any = null) {
 
     let url = `${this.API_URL}v1/courses?orgId=${orgId}`;
     let response = await axios.get(url, { headers: this.headers });
@@ -263,8 +263,8 @@ export class CourseClient {
     return topics.data;
   }
 
-  async getUsers(orgId:string, courseId: string) {
-    let url = `${this.API_URL}v1/courses/${courseId}/users?org=${orgId}`;    
+  async getUsers(orgId: string, courseId: string) {
+    let url = `${this.API_URL}v1/courses/${courseId}/users?org=${orgId}`;
     //return this.http.get(url, { headers: this.getHeaders() });
     let topics = await axios.get(url);
     return topics.data;

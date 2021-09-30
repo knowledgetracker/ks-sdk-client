@@ -21,9 +21,9 @@ class UserClient {
         this.API_URL =
             config.environment === "DEV" ? config_1.API_ENVIRONMENT.DEV : config_1.API_ENVIRONMENT.PROD;
     }
-    getUsers(orgId, role) {
+    getUsers(role) {
         return __awaiter(this, void 0, void 0, function* () {
-            let url = `${this.API_URL}v1/users?role=${role}&org=${orgId}`;
+            let url = `${this.API_URL}v1/users?role=${role}`;
             let response = yield axios_1.default.get(url, { headers: this.headers });
             return response.data;
         });
