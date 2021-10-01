@@ -18,12 +18,18 @@ export class BatchClient {
   }
 
   async updateBatch(id: any, batch: any) {
-    // let createdBy = this.authService.getLoggedInUsername();
-    // batch["createdBy"] = createdBy;
     let url = `${this.API_URL}v1/batches/${id}`;
     let response = await axios.put(url, batch, { headers: this.headers });
     return response.data;
   }
+
+
+  async updateBatchTopicFeedback(id: any, batchTopic: any) {
+    let url = `${this.API_URL}v1/batchcoursetopics/${id}/feedback`;
+    let response = await axios.put(url, batchTopic, { headers: this.headers });
+    return response.data;
+  }
+
   async updateBatchCourse(id: any, batchcourse: any) {
     let url = `${this.API_URL}v1/batches/${id}/courses/${batchcourse.courseId}`;
     let response = await axios.put(url, batchcourse, { headers: this.headers });

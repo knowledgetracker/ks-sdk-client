@@ -4,6 +4,7 @@ export declare class BatchClient {
     constructor(config?: any);
     addBatch(batch: any): Promise<any>;
     updateBatch(id: any, batch: any): Promise<any>;
+    updateBatchTopicFeedback(id: any, batchTopic: any): Promise<any>;
     updateBatchCourse(id: any, batchcourse: any): Promise<any>;
     deleteBatch(id: any): Promise<any>;
     getBatches(): Promise<any>;

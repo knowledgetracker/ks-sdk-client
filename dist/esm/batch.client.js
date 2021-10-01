@@ -24,10 +24,15 @@ export class BatchClient {
     }
     updateBatch(id, batch) {
         return __awaiter(this, void 0, void 0, function* () {
-            // let createdBy = this.authService.getLoggedInUsername();
-            // batch["createdBy"] = createdBy;
             let url = `${this.API_URL}v1/batches/${id}`;
             let response = yield axios.put(url, batch, { headers: this.headers });
+            return response.data;
+        });
+    }
+    updateBatchTopicFeedback(id, batchTopic) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let url = `${this.API_URL}v1/batchcoursetopics/${id}/feedback`;
+            let response = yield axios.put(url, batchTopic, { headers: this.headers });
             return response.data;
         });
     }
